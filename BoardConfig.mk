@@ -52,44 +52,43 @@ RECOVERY_SDCARD_ON_DATA := false
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/goya
 TARGET_KERNEL_CONFIG := goyawifi_recovery_twrp_defconfig
-BOARD_KERNEL_CMDLINE   := selinux=0 androidboot.selinux=disabled enforcing=0 goyawifi.initrd_size=1419841 goyawifi.lcd_init=1
-BOARD_KERNEL_PAGESIZE  := 2048
-BOARD_KERNEL_BASE      := 0x10000000
-BOARD_KERNEL_OFFSET    := 0x00008000
-BOARD_RAMDISK_OFFSET   := 0x01000000
-BOARD_SECOND_OFFSET    := 0x00f00000
-BOARD_TAGS_OFFSET      := 0x00000100
-BOARD_MKBOOTIMG_ARGS   += --pagesize $(BOARD_KERNEL_PAGESIZE)
-BOARD_MKBOOTIMG_ARGS   += --base $(BOARD_KERNEL_BASE)
-BOARD_MKBOOTIMG_ARGS   += --kernel_offset $(BOARD_KERNEL_OFFSET)
-BOARD_MKBOOTIMG_ARGS   += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS   += --second_offset $(BOARD_SECOND_OFFSET)
-BOARD_MKBOOTIMG_ARGS   += --tags_offset $(BOARD_TAGS_OFFSET)
+BOARD_KERNEL_CMDLINE := selinux=0 androidboot.selinux=disabled enforcing=0
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_BASE := 0x10000000
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_SECOND_OFFSET := 0x00f00000
+BOARD_TAGS_OFFSET := 0x00000100
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
+BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
+BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-BOARD_USE_BGRA_8888          := true
+BOARD_USE_BGRA_8888 := true
 
 # TeamWin Recovery
-TW_THEME                := landscape_hdpi
-TW_EXCLUDE_TZDATA       := false
-TW_EXCLUDE_NANO         := false
-TW_EXCLUDE_BASH         := false
-TW_INCLUDE_FB2PNG       := true
-TW_FORCE_USE_BUSYBOX    := true
-TW_INCLUDE_CRYPTO       := true
-TW_NO_HAPTICS          	:= true
-TW_NO_CPU_TEMP         := true
-TW_INTERNAL_STORAGE_PATH        := "/sdcard"
+TW_THEME := landscape_hdpi
+TW_EXCLUDE_TZDATA := true
+TW_EXCLUDE_NANO := true
+TW_EXCLUDE_BASH := true
+TW_INCLUDE_FB2PNG := true
+TW_FORCE_USE_BUSYBOX := true
+TW_NO_HAPTICS := true
+TW_NO_CPU_TEMP := true
+TW_INTERNAL_STORAGE_PATH := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
-TW_EXTERNAL_STORAGE_PATH        := "/external_sd"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-BOARD_HAS_NO_REAL_SDCARD        := true
 
-TW_INCLUDE_FUSE_EXFAT        := true
-TW_INCLUDE_CRYPTO            := false
+# Crypto / USB
+TW_INCLUDE_FUSE_EXFAT := true
+TW_INCLUDE_CRYPTO := false
 TW_EXCLUDE_ENCRYPTED_BACKUPS := true
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun/file"
-TW_MTP_DEVICE     := "/dev/usb_mtp_gadget"
-TW_DEVICE_VERSION 		:= 0_notnoelchannel
+TW_MTP_DEVICE := "/dev/usb_mtp_gadget"
+TW_DEVICE_VERSION := 0_notnoelchannel
 
