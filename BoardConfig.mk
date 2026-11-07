@@ -79,5 +79,17 @@ TW_INCLUDE_FB2PNG       := true
 TW_FORCE_USE_BUSYBOX    := true
 TW_INCLUDE_CRYPTO       := true
 TW_NO_HAPTICS          	:= true
+TW_NO_CPU_TEMP         := true
+TW_INTERNAL_STORAGE_PATH        := "/sdcard"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_EXTERNAL_STORAGE_PATH        := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+BOARD_HAS_NO_REAL_SDCARD        := true
+
+TW_INCLUDE_FUSE_EXFAT        := true
+TW_INCLUDE_CRYPTO            := false
+TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun/file"
+TW_MTP_DEVICE     := "/dev/usb_mtp_gadget"
 TW_DEVICE_VERSION 		:= 0_notnoelchannel
 
