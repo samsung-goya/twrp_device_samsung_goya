@@ -18,17 +18,17 @@ LOCAL_PATH := device/samsung/goya
 
 
 # Platform
-TARGET_ARCH                  := arm
-TARGET_ARCH_VARIANT          := armv7-a-neon
-TARGET_CPU_VARIANT           := generic
-TARGET_CPU_ABI               := armeabi-v7a
-TARGET_CPU_ABI2              := armeabi
-TARGET_BOARD_PLATFORM        := mrvl
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a9
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_BOARD_PLATFORM := mrvl
+TARGET_BOOTLOADER_BOARD_NAME := PXA986
 TARGET_BOARD_PLATFORM_GPU    := vivante-gc1000
-TARGET_BOOTLOADER_BOARD_NAME := goya
 TARGET_FORCE_CPU_UPLOAD      := true
 BOARD_VENDOR                 := samsung
-
+TARGET_NO_BOOTLOADER := true
 # Bootloader
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE    := true
@@ -38,16 +38,21 @@ BOARD_HAS_NO_MISC_PARTITION := true
 TARGET_OTA_ASSERT_DEVICE := goya,goyawifi,goyawifiue,goyawifixx,goyawifixxx,goyawifizc,goyawifizs,goyawifi,goya3g,goya3gxx,goya3gzc,goya3gdv,goya3gub
 
 # Filesystem
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
-BOARD_FLASH_BLOCK_SIZE             := 4096
-TARGET_USERIMAGES_USE_EXT4         := true
-BOARD_HAS_NO_REAL_SDCARD           := true
-RECOVERY_SDCARD_ON_DATA            := false
-BOARD_CUSTOM_BOOTIMG_MK            := $(LOCAL_PATH)/mkbootimg.mk
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1594884096
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 5368709120
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
+BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_SDCARD_ON_DATA := false
 
 # Kernel
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/zImage
-BOARD_KERNEL_CMDLINE   := androidboot.selinux=permissive androidboot.hardware=pxa988
+TARGET_KERNEL_SOURCE := kernel/samsung/goya
+TARGET_KERNEL_CONFIG := goyawifi_recovery_twrp_defconfig
+BOARD_KERNEL_CMDLINE   := selinux=0 androidboot.selinux=disabled enforcing=0 goyawifi.initrd_size=1419841 goyawifi.lcd_init=1
 BOARD_KERNEL_PAGESIZE  := 2048
 BOARD_KERNEL_BASE      := 0x10000000
 BOARD_KERNEL_OFFSET    := 0x00008000
@@ -73,5 +78,6 @@ TW_EXCLUDE_BASH         := false
 TW_INCLUDE_FB2PNG       := true
 TW_FORCE_USE_BUSYBOX    := true
 TW_INCLUDE_CRYPTO       := true
-TW_NO_CPU_TEMP         := true
-TW_NO_HAPTICS          := true
+TW_NO_HAPTICS          	:= true
+TW_DEVICE_VERSION 		:= 0_notnoelchannel
+
